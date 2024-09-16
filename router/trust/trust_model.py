@@ -1,3 +1,4 @@
+# TODO: Enhance and Implement the trust model for the router to decide if it should trust a neighbor for routing.
 class TrustModel:
     def __init__(self, direct_trust):
         """Initialize the trust model with a direct trust score."""
