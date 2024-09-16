@@ -1,5 +1,5 @@
 import struct
-
+# TODO: Define BGP protocol processing and functionality for the router.
 def create_ip_packet(src_ip, dst_ip, payload):
     version = 4
     ihl = 5  # Header length

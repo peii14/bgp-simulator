@@ -152,6 +152,7 @@ class BGP_Router:
             time.sleep(KEEPALIVE_INTERVAL)
 
     def update_routing_table(self, neighbor_id, routes):
+        # TODO: Implement the routing table update logic here
         """Update the routing table based on a neighbor's update."""
         self.routing_table[neighbor_id] = routes
         print(f"Router {self.router_id} updated routing table with routes from Router {neighbor_id}.")
