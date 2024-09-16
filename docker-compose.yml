@@ -1,0 +1,268 @@
+version: '3'
+services:
+  router1:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router1
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.21
+    environment:
+      - ROUTER_ID=1
+    volumes:
+      - ./router:/app
+
+  router2:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router2
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.2
+    environment:
+      - ROUTER_ID=2
+    volumes:
+      - ./router:/app
+
+  router3:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router3
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.3
+    environment:
+      - ROUTER_ID=3
+    volumes:
+      - ./router:/app
+
+  router4:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router4
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.4
+    environment:
+      - ROUTER_ID=4
+    volumes:
+      - ./router:/app
+
+  router5:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router5
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.5
+    environment:
+      - ROUTER_ID=5
+    volumes:
+      - ./router:/app
+
+  router6:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router6
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.6
+    environment:
+      - ROUTER_ID=6
+    volumes:
+      - ./router:/app
+
+  router7:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router7
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.7
+    environment:
+      - ROUTER_ID=7
+    volumes:
+      - ./router:/app
+
+  router8:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router8
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.8
+    environment:
+      - ROUTER_ID=8
+    volumes:
+      - ./router:/app
+
+  router9:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router9
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.9
+    environment:
+      - ROUTER_ID=9
+    volumes:
+      - ./router:/app
+
+  router10:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router10
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.10
+    environment:
+      - ROUTER_ID=10
+    volumes:
+      - ./router:/app
+
+  router11:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router11
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.11
+    environment:
+      - ROUTER_ID=11
+    volumes:
+      - ./router:/app
+
+  router12:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router12
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.12
+    environment:
+      - ROUTER_ID=12
+    volumes:
+      - ./router:/app
+
+  router13:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router13
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.13
+    environment:
+      - ROUTER_ID=13
+    volumes:
+      - ./router:/app
+
+  router14:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router14
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.14
+    environment:
+      - ROUTER_ID=14
+    volumes:
+      - ./router:/app
+
+  router15:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router15
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.15
+    environment:
+      - ROUTER_ID=15
+    volumes:
+      - ./router:/app
+
+  router16:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router16
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.16
+    environment:
+      - ROUTER_ID=16
+    volumes:
+      - ./router:/app
+
+  router17:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router17
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.17
+    environment:
+      - ROUTER_ID=17
+    volumes:
+      - ./router:/app
+
+  router18:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router18
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.18
+    environment:
+      - ROUTER_ID=18
+    volumes:
+      - ./router:/app
+
+  router19:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router19
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.19
+    environment:
+      - ROUTER_ID=19
+    volumes:
+      - ./router:/app
+
+  router20:
+    build: 
+      context: . 
+      dockerfile: ./router/Dockerfile
+    container_name: router20
+    networks:
+      bgp_net:
+        ipv4_address: 192.168.1.20
+    environment:
+      - ROUTER_ID=20
+    volumes:
+      - ./router:/app
+
+networks:
+  bgp_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
