@@ -50,4 +50,5 @@ You can configure each router by modifying the respective configuration files in
 - [ ] Simulate error conditions
 - [ ] Create Architecture Diagrams
 - [ ] Create timestamp for logging
+- [ ] Enhance Trust model and Voting mechanism
 - [ ] error handling
