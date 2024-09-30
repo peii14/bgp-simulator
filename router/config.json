@@ -10,11 +10,23 @@
       },
       "trust": {
         "direct_trust": 0.9
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.2.0/24",
+          "next_hop": "Router2",
+          "as_path": ["AS1", "AS2"]
+        },
+        {
+          "network": "192.168.3.0/24",
+          "next_hop": "Router3",
+          "as_path": ["AS1", "AS3"]
+        }
+      ]
     },
     {
       "id": 2,
-      "ip": "192.168.1.2",
+      "ip": "192.168.2.2",
       "neighbors": [1, 4, 5],
       "policies": {
         "local_pref": 100,
@@ -22,11 +34,28 @@
       },
       "trust": {
         "direct_trust": 0.8
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.1.0/24",
+          "next_hop": "Router1",
+          "as_path": ["AS2", "AS1"]
+        },
+        {
+          "network": "192.168.4.0/24",
+          "next_hop": "Router4",
+          "as_path": ["AS2", "AS4"]
+        },
+        {
+          "network": "192.168.5.0/25",
+          "next_hop": "Router5",
+          "as_path": ["AS2", "AS5"]
+        }
+      ]
     },
     {
       "id": 3,
-      "ip": "192.168.1.3",
+      "ip": "192.168.3.3",
       "neighbors": [1, 6],
       "policies": {
         "local_pref": 100,
@@ -34,7 +63,19 @@
       },
       "trust": {
         "direct_trust": 0.85
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.1.0/24",
+          "next_hop": "Router1",
+          "as_path": ["AS3", "AS1"]
+        },
+        {
+          "network": "192.168.6.0/24",
+          "next_hop": "Router6",
+          "as_path": ["AS3", "AS6"]
+        }
+      ]
     },
     {
       "id": 4,
@@ -46,7 +87,24 @@
       },
       "trust": {
         "direct_trust": 0.75
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.2.0/24",
+          "next_hop": "Router2",
+          "as_path": ["AS4", "AS2"]
+        },
+        {
+          "network": "192.168.7.0/24",
+          "next_hop": "Router7",
+          "as_path": ["AS4", "AS7"]
+        },
+        {
+          "network": "192.168.8.0/24",
+          "next_hop": "Router8",
+          "as_path": ["AS4", "AS8"]
+        }
+      ]
     },
     {
       "id": 5,
@@ -58,7 +116,19 @@
       },
       "trust": {
         "direct_trust": 0.7
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.2.0/24",
+          "next_hop": "Router2",
+          "as_path": ["AS5", "AS2"]
+        },
+        {
+          "network": "192.168.9.0/24",
+          "next_hop": "Router9",
+          "as_path": ["AS5", "AS9"]
+        }
+      ]
     },
     {
       "id": 6,
@@ -70,7 +140,24 @@
       },
       "trust": {
         "direct_trust": 0.8
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.3.0/24",
+          "next_hop": "Router3",
+          "as_path": ["AS6", "AS3"]
+        },
+        {
+          "network": "192.168.10.0/24",
+          "next_hop": "Router10",
+          "as_path": ["AS6", "AS10"]
+        },
+        {
+          "network": "192.168.11.0/24",
+          "next_hop": "Router11",
+          "as_path": ["AS6", "AS11"]
+        }
+      ]
     },
     {
       "id": 7,
@@ -82,7 +169,14 @@
       },
       "trust": {
         "direct_trust": 0.65
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.4.0/24",
+          "next_hop": "Router4",
+          "as_path": ["AS7", "AS4"]
+        }
+      ]
     },
     {
       "id": 8,
@@ -94,7 +188,14 @@
       },
       "trust": {
         "direct_trust": 0.9
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.4.0/24",
+          "next_hop": "Router4",
+          "as_path": ["AS7", "AS4"]
+        }
+      ]
     },
     {
       "id": 9,
@@ -106,7 +207,19 @@
       },
       "trust": {
         "direct_trust": 0.7
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.5.0/24",
+          "next_hop": "Router5",
+          "as_path": ["AS9", "AS5"]
+        },
+        {
+          "network": "192.168.12.0/24",
+          "next_hop": "Router12",
+          "as_path": ["AS9", "AS12"]
+        }
+      ]
     },
     {
       "id": 10,
@@ -118,7 +231,19 @@
       },
       "trust": {
         "direct_trust": 0.8
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.6.0/24",
+          "next_hop": "Router6",
+          "as_path": ["AS10", "AS6"]
+        },
+        {
+          "network": "192.168.13.0/24",
+          "next_hop": "Router13",
+          "as_path": ["AS10", "AS13"]
+        }
+      ]
     },
     {
       "id": 11,
@@ -130,7 +255,14 @@
       },
       "trust": {
         "direct_trust": 0.75
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.6.0/24",
+          "next_hop": "Router6",
+          "as_path": ["AS11", "AS6"]
+        }
+      ]
     },
     {
       "id": 12,
@@ -142,7 +274,24 @@
       },
       "trust": {
         "direct_trust": 0.85
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.9.0/24",
+          "next_hop": "Router9",
+          "as_path": ["AS11", "AS9"]
+        },
+        {
+          "network": "192.168.14.0/24",
+          "next_hop": "Router14",
+          "as_path": ["AS11", "AS14"]
+        },
+        {
+          "network": "192.168.15.0/24",
+          "next_hop": "Router15",
+          "as_path": ["AS11", "AS15"]
+        }
+      ]
     },
     {
       "id": 13,
@@ -154,7 +303,19 @@
       },
       "trust": {
         "direct_trust": 0.9
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.10.0/24",
+          "next_hop": "Router10",
+          "as_path": ["AS13", "AS10"]
+        },
+        {
+          "network": "192.168.16.0/24",
+          "next_hop": "Router16",
+          "as_path": ["AS13", "AS16"]
+        }
+      ]
     },
     {
       "id": 14,
@@ -166,7 +327,14 @@
       },
       "trust": {
         "direct_trust": 0.8
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.12.0/24",
+          "next_hop": "Router12",
+          "as_path": ["AS14", "AS12"]
+        }
+      ]
     },
     {
       "id": 15,
@@ -178,7 +346,19 @@
       },
       "trust": {
         "direct_trust": 0.75
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.12.0/24",
+          "next_hop": "Router12",
+          "as_path": ["AS15", "AS12"]
+        },
+        {
+          "network": "192.168.17.0/24",
+          "next_hop": "Router17",
+          "as_path": ["AS15", "AS17"]
+        }
+      ]
     },
     {
       "id": 16,
@@ -190,7 +370,19 @@
       },
       "trust": {
         "direct_trust": 0.7
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.13.0/24",
+          "next_hop": "Router13",
+          "as_path": ["AS16", "AS13"]
+        },
+        {
+          "network": "192.168.18.0/24",
+          "next_hop": "Router18",
+          "as_path": ["AS16", "AS18"]
+        }
+      ]
     },
     {
       "id": 17,
@@ -202,7 +394,19 @@
       },
       "trust": {
         "direct_trust": 0.8
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.15.0/24",
+          "next_hop": "Router15",
+          "as_path": ["AS17", "AS15"]
+        },
+        {
+          "network": "192.168.19.0/24",
+          "next_hop": "Router19",
+          "as_path": ["AS17", "AS19"]
+        }
+      ]
     },
     {
       "id": 18,
@@ -214,7 +418,19 @@
       },
       "trust": {
         "direct_trust": 0.85
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.16.0/24",
+          "next_hop": "Router16",
+          "as_path": ["AS18", "AS16"]
+        },
+        {
+          "network": "192.168.20.0/24",
+          "next_hop": "Router20",
+          "as_path": ["AS18", "AS20"]
+        }
+      ]
     },
     {
       "id": 19,
@@ -226,7 +442,14 @@
       },
       "trust": {
         "direct_trust": 0.75
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.17.0/24",
+          "next_hop": "Router17",
+          "as_path": ["AS19", "AS17"]
+        }
+      ]
     },
     {
       "id": 20,
@@ -238,7 +461,14 @@
       },
       "trust": {
         "direct_trust": 0.9
-      }
+      },
+      "routing_table": [
+        {
+          "network": "192.168.18.0/24",
+          "next_hop": "Router18",
+          "as_path": ["AS20", "AS18"]
+        }
+      ]
     }
   ],
   "bgp_defaults": {
