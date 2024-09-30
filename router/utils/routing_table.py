@@ -13,7 +13,7 @@ def load_from_config(self, routing_table_config):
             self.add_route(entry['network'], entry['next_hop'], entry['as_path'])
 
 def add_route(self, network, next_hop, as_path):
-    """Add a new route to the routing table"""
+    """Add a new route to the routing_table"""
     route = {
         "network": network,
         "next_hop": next_hop,
