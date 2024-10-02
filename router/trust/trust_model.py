@@ -1,23 +1,23 @@
 # TODO: Enhance and Implement the trust model for the router to decide if it should trust a neighbor for routing.
 class TrustModel:
-    def __init__(self, direct_trust):
-        """Initialize the trust model with a direct trust score."""
-        self.direct_trust = direct_trust
-        self.voted_trust = {}
-    
+    def __init__(self, distances):
+        self.distances = distances  # data from config.json
+        self.voted_trust = {}  # Store voted trust from other routers
+
     def update_voted_trust(self, neighbor_id, trust_value):
         """Update the voted trust for a neighbor based on the vote from other routers."""
         self.voted_trust[neighbor_id] = trust_value
 
-    def calculate_total_trust(self, neighbor_id):
-        """Calculate total trust as a combination of direct trust and voted trust."""
-        if neighbor_id in self.voted_trust:
-            return 0.6 * self.direct_trust + 0.4 * self.voted_trust[neighbor_id]
-        return self.direct_trust
+    def decide_best_route(self):
+        """Decide which neighbor to trust based on the shortest distance and voted trust."""
+        if not self.distances:
+            return None  # No neighbors available
 
-    def decide_route(self, neighbor_id):
-        """Decide if the router should trust this neighbor for routing."""
-        total_trust = self.calculate_total_trust(neighbor_id)
-        if total_trust > 0.7: # Trust threshold
-            return True
-        return False
+        # Blend both distance and voted trust
+        for neighbor, trust in self.voted_trust.items():
+            if neighbor in self.distances:
+                self.distances[neighbor] = 0.6 * self.distances[neighbor] + 0.4 * trust
+
+        # Choose the neighbor with the smallest distance
+        best_neighbor = min(self.distances, key=self.distances.get)
+        return best_neighbor

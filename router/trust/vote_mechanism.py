@@ -1,15 +1,13 @@
 import random
 # TODO: Enhance and Implement the VotingMechanism class
 class VotingMechanism:
-    def __init__(self, router_id, neighbors):
-        """Initialize the voting mechanism for a router."""
+    def __init__(self, router_id, neighbors):  # initializing each router, storing routers id and neigbours
         self.router_id = router_id
         self.neighbors = neighbors
         self.votes = {}
 
-    def cast_vote(self, neighbor_id):
-        """Cast a vote for a neighbor, either trusting them or not."""
-        vote = random.uniform(0.5, 1.0)  # Randomly generate a trust score between 0.5 and 1.0
+    def cast_vote(self, neighbor_id): # creating votes for neighbours
+        vote = random.uniform(0.5, 1.0)  # Generating random score between 0.5 and 1.0, we can change it into something more complicated if we think we need to.
         self.votes[neighbor_id] = vote
         print(f"Router {self.router_id} cast vote for Router {neighbor_id}: {vote}")
         return vote
@@ -19,10 +17,5 @@ class VotingMechanism:
         votes_result = {}
         for neighbor in self.neighbors:
             vote = self.cast_vote(neighbor)
-            votes_result[neighbor] = vote
+            votes_result[neighbor] = vote # Returns the votes_result dictionary containing all the votes cast for neighbors.
         return votes_result
-
-    def receive_votes(self, votes_from_others):
-        """Receive votes from other routers and update local trust values."""
-        for neighbor_id, vote in votes_from_others.items():
-            print(f"Router {self.router_id} received vote from Router {neighbor_id}: {vote}")

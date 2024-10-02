@@ -38,7 +38,7 @@ class BGP_Router:
         self.ip = self.config['ip']
         self.neighbors = self.config['neighbors']
         self.routing_table = {}
-        self.trust_model = TrustModel(self.config['trust']['direct_trust'])
+        self.trust_model = TrustModel(self.config['distance'])
         self.voting_mechanism = VotingMechanism(self.router_id, self.neighbors)
         self.sockets = {}
         self.keepalive_received = {}
@@ -128,11 +128,14 @@ class BGP_Router:
             print(f"Router {self.router_id} received KEEPALIVE from Router {neighbor_id}.")
 
         elif message['type'] == BGP_UPDATE:
-            if self.trust_model.decide_route(neighbor_id):
-                print(f"Router {self.router_id} trusts Router {neighbor_id}, updating routing table.")
+            # Choose the best route based on distances
+            best_neighbor = self.trust_model.decide_best_route()
+            if best_neighbor == neighbor_id:
+                print(f"Router {self.router_id} selected Router {neighbor_id} (best route based on distance).")
                 self.update_routing_table(neighbor_id, message['payload'])
             else:
-                print(f"Router {self.router_id} does not trust Router {neighbor_id}, ignoring update.")
+                print(f"Router {self.router_id} did not select Router {neighbor_id} (better route exists).")
+
 
         elif message['type'] == BGP_OPEN:
             print(f"Router {self.router_id} received OPEN message from Router {neighbor_id}.")
