@@ -14,12 +14,12 @@
       "routing_table": [
         {
           "network": "192.168.2.0/24",
-          "next_hop": "Router2",
+          "next_hop": "2",
           "as_path": ["AS1", "AS2"]
         },
         {
           "network": "192.168.3.0/24",
-          "next_hop": "Router3",
+          "next_hop": "3",
           "as_path": ["AS1", "AS3"]
         }
       ]
@@ -38,17 +38,17 @@
       "routing_table": [
         {
           "network": "192.168.1.0/24",
-          "next_hop": "Router1",
+          "next_hop": "1",
           "as_path": ["AS2", "AS1"]
         },
         {
           "network": "192.168.4.0/24",
-          "next_hop": "Router4",
+          "next_hop": "4",
           "as_path": ["AS2", "AS4"]
         },
         {
           "network": "192.168.5.0/24",
-          "next_hop": "Router5",
+          "next_hop": "5",
           "as_path": ["AS2", "AS5"]
         }
       ]
@@ -67,12 +67,12 @@
       "routing_table": [
         {
           "network": "192.168.1.0/24",
-          "next_hop": "Router1",
+          "next_hop": "1",
           "as_path": ["AS3", "AS1"]
         },
         {
           "network": "192.168.6.0/24",
-          "next_hop": "Router6",
+          "next_hop": "6",
           "as_path": ["AS3", "AS6"]
         }
       ]
@@ -91,17 +91,17 @@
       "routing_table": [
         {
           "network": "192.168.2.0/24",
-          "next_hop": "Router2",
+          "next_hop": "2",
           "as_path": ["AS4", "AS2"]
         },
         {
           "network": "192.168.7.0/24",
-          "next_hop": "Router7",
+          "next_hop": "7",
           "as_path": ["AS4", "AS7"]
         },
         {
           "network": "192.168.8.0/24",
-          "next_hop": "Router8",
+          "next_hop": "8",
           "as_path": ["AS4", "AS8"]
         }
       ]
@@ -120,12 +120,12 @@
       "routing_table": [
         {
           "network": "192.168.2.0/24",
-          "next_hop": "Router2",
+          "next_hop": "2",
           "as_path": ["AS5", "AS2"]
         },
         {
           "network": "192.168.9.0/24",
-          "next_hop": "Router9",
+          "next_hop": "9",
           "as_path": ["AS5", "AS9"]
         }
       ]
@@ -144,17 +144,17 @@
       "routing_table": [
         {
           "network": "192.168.3.0/24",
-          "next_hop": "Router3",
+          "next_hop": "3",
           "as_path": ["AS6", "AS3"]
         },
         {
           "network": "192.168.10.0/24",
-          "next_hop": "Router10",
+          "next_hop": "10",
           "as_path": ["AS6", "AS10"]
         },
         {
           "network": "192.168.11.0/24",
-          "next_hop": "Router11",
+          "next_hop": "11",
           "as_path": ["AS6", "AS11"]
         }
       ]
@@ -173,7 +173,7 @@
       "routing_table": [
         {
           "network": "192.168.4.0/24",
-          "next_hop": "Router4",
+          "next_hop": "4",
           "as_path": ["AS7", "AS4"]
         }
       ]
@@ -192,7 +192,7 @@
       "routing_table": [
         {
           "network": "192.168.4.0/24",
-          "next_hop": "Router4",
+          "next_hop": "4",
           "as_path": ["AS7", "AS4"]
         }
       ]
@@ -211,12 +211,12 @@
       "routing_table": [
         {
           "network": "192.168.5.0/24",
-          "next_hop": "Router5",
+          "next_hop": "5",
           "as_path": ["AS9", "AS5"]
         },
         {
           "network": "192.168.12.0/24",
-          "next_hop": "Router12",
+          "next_hop": "12",
           "as_path": ["AS9", "AS12"]
         }
       ]
@@ -235,12 +235,12 @@
       "routing_table": [
         {
           "network": "192.168.6.0/24",
-          "next_hop": "Router6",
+          "next_hop": "6",
           "as_path": ["AS10", "AS6"]
         },
         {
           "network": "192.168.13.0/24",
-          "next_hop": "Router13",
+          "next_hop": "13",
           "as_path": ["AS10", "AS13"]
         }
       ]
@@ -259,7 +259,7 @@
       "routing_table": [
         {
           "network": "192.168.6.0/24",
-          "next_hop": "Router6",
+          "next_hop": "6",
           "as_path": ["AS11", "AS6"]
         }
       ]
@@ -278,17 +278,17 @@
       "routing_table": [
         {
           "network": "192.168.9.0/24",
-          "next_hop": "Router9",
+          "next_hop": "9",
           "as_path": ["AS11", "AS9"]
         },
         {
           "network": "192.168.14.0/24",
-          "next_hop": "Router14",
+          "next_hop": "14",
           "as_path": ["AS11", "AS14"]
         },
         {
           "network": "192.168.15.0/24",
-          "next_hop": "Router15",
+          "next_hop": "15",
           "as_path": ["AS11", "AS15"]
         }
       ]
@@ -307,12 +307,12 @@
       "routing_table": [
         {
           "network": "192.168.10.0/24",
-          "next_hop": "Router10",
+          "next_hop": "10",
           "as_path": ["AS13", "AS10"]
         },
         {
           "network": "192.168.16.0/24",
-          "next_hop": "Router16",
+          "next_hop": "16",
           "as_path": ["AS13", "AS16"]
         }
       ]
@@ -331,7 +331,7 @@
       "routing_table": [
         {
           "network": "192.168.12.0/24",
-          "next_hop": "Router12",
+          "next_hop": "12",
           "as_path": ["AS14", "AS12"]
         }
       ]
@@ -350,12 +350,12 @@
       "routing_table": [
         {
           "network": "192.168.12.0/24",
-          "next_hop": "Router12",
+          "next_hop": "12",
           "as_path": ["AS15", "AS12"]
         },
         {
           "network": "192.168.17.0/24",
-          "next_hop": "Router17",
+          "next_hop": "17",
           "as_path": ["AS15", "AS17"]
         }
       ]
@@ -374,12 +374,12 @@
       "routing_table": [
         {
           "network": "192.168.13.0/24",
-          "next_hop": "Router13",
+          "next_hop": "13",
           "as_path": ["AS16", "AS13"]
         },
         {
           "network": "192.168.18.0/24",
-          "next_hop": "Router18",
+          "next_hop": "18",
           "as_path": ["AS16", "AS18"]
         }
       ]
@@ -398,12 +398,12 @@
       "routing_table": [
         {
           "network": "192.168.15.0/24",
-          "next_hop": "Router15",
+          "next_hop": "15",
           "as_path": ["AS17", "AS15"]
         },
         {
           "network": "192.168.19.0/24",
-          "next_hop": "Router19",
+          "next_hop": "19",
           "as_path": ["AS17", "AS19"]
         }
       ]
@@ -422,12 +422,12 @@
       "routing_table": [
         {
           "network": "192.168.16.0/24",
-          "next_hop": "Router16",
+          "next_hop": "16",
           "as_path": ["AS18", "AS16"]
         },
         {
           "network": "192.168.20.0/24",
-          "next_hop": "Router20",
+          "next_hop": "20",
           "as_path": ["AS18", "AS20"]
         }
       ]
@@ -446,7 +446,7 @@
       "routing_table": [
         {
           "network": "192.168.17.0/24",
-          "next_hop": "Router17",
+          "next_hop": "17",
           "as_path": ["AS19", "AS17"]
         }
       ]
@@ -465,7 +465,7 @@
       "routing_table": [
         {
           "network": "192.168.18.0/24",
-          "next_hop": "Router18",
+          "next_hop": "18",
           "as_path": ["AS20", "AS18"]
         }
       ]
