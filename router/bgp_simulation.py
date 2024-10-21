@@ -37,12 +37,10 @@ class BGP_Router:
         self.voting_mechanism = VotingMechanism(self.router_id, self.neighbors)
         self.sockets = {}
         self.keepalive_received = {}
-        self.down_routers = set()  # Track routers marked as down
+        self.down_routers = set() 
 
-        # Initialize the routing table from the config
         self.initialize_routing_table()
 
-        # Start router services
         self.start_router()
 
     def initialize_routing_table(self):
@@ -61,7 +59,7 @@ class BGP_Router:
         listener_thread.daemon = True
         listener_thread.start()
 
-        time.sleep(10)  # Sleep to allow other routers to start
+        time.sleep(5) 
         self.connect_to_neighbors()
 
         keepalive_thread = threading.Thread(target=self.send_keepalive)
@@ -198,7 +196,7 @@ class BGP_Router:
 
     def send_keepalive(self):
         """Send KEEPALIVE messages to neighbors at regular intervals."""
-        while True:  # Ensure the thread runs continuously
+        while True: 
             try:
                 for neighbor_id, sock in self.sockets.items():
                     self.send_message(sock, BGP_KEEPALIVE)
@@ -228,7 +226,6 @@ class BGP_Router:
         print(f"Removing routes learned from Router {neighbor_id}.")
         routes_to_remove = []
 
-        # Find and remove routes learned from the failed neighbor
         for route in self.routing_table.table[:]:
             print(f"Checking route: {route['next_hop']} is Router {neighbor_id}")
             if str(route['next_hop']).lower() == f"router{neighbor_id}".lower():
@@ -238,7 +235,6 @@ class BGP_Router:
             else:
                 print(f"Route for network {route['network']} is not from Router {neighbor_id}.")
         
-        # If routes were removed, propagate the withdrawal
         if routes_to_remove:
             print(f"Propagating route withdrawals: {routes_to_remove}")
             self.propagate_route_withdrawal(neighbor_id, routes_to_remove)
