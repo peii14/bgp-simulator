@@ -3,10 +3,14 @@ import socket
 import threading
 import time
 import sys
+from lib2to3.btm_utils import rec_test
+
+from utils.routing_table import RoutingTable
 from trust.trust_model import TrustModel
 from trust.vote_mechanism import VotingMechanism
 from utils.packet_processing import create_ip_packet, parse_ip_packet
 import os
+
 
 # Load the configuration from config.json
 with open('config.json') as config_file:
@@ -37,7 +41,7 @@ class BGP_Router:
         self.router_id = self.config['id']
         self.ip = self.config['ip']
         self.neighbors = self.config['neighbors']
-        self.routing_table = {}
+        self.routing_table = RoutingTable(self.router_id)
         self.trust_model = TrustModel(self.config['trust']['direct_trust'])
         self.voting_mechanism = VotingMechanism(self.router_id, self.neighbors)
         self.sockets = {}
@@ -154,7 +158,8 @@ class BGP_Router:
     def update_routing_table(self, neighbor_id, routes):
         # TODO: Implement the routing table update logic here
         """Update the routing table based on a neighbor's update."""
-        self.routing_table[neighbor_id] = routes
+        #self.routing_table[neighbor_id] = routes #here the route is a message?
+        #self.routing_table.update_route(network, neighbor_id, as_path) OR routes
         print(f"Router {self.router_id} updated routing table with routes from Router {neighbor_id}.")
 
     def check_for_neighbor_failures(self):
@@ -165,11 +170,12 @@ class BGP_Router:
                 if current_time - last_keepalive_time > HOLD_TIMER:
                     print(f"Router {self.router_id} has not received KEEPALIVE from Router {neighbor_id}. Declaring Router {neighbor_id} as down.")
                     self.remove_neighbor_routes(neighbor_id)
-            time.sleep(HOLD_TIMER)  
+            time.sleep(HOLD_TIMER)
+
     def remove_neighbor_routes(self, neighbor_id):
         """Remove routes learned from the failed neighbor."""
-        if neighbor_id in self.routing_table:
-            del self.routing_table[neighbor_id]
+        if self.routing_table.is_route_in_routing_table(neighbor_id):
+            self.routing_table.remove_route(neighbor_id)
             print(f"Router {self.router_id} removed routes from Router {neighbor_id} in the routing table.")
 
     def get_neighbor_by_ip(self, ip):
