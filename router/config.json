@@ -472,8 +472,8 @@
     }
   ],
   "bgp_defaults": {
-    "as_path_limit": 255,
-    "hold_timer": 30,
+    "as_path_limit": 10,
+    "hold_timer": 10,
     "keepalive_interval": 3
   }
 }
