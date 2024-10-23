@@ -261,7 +261,7 @@ class BGP_Router:
             try:
                 votes = self.voting_mechanism.exchange_votes()
                 for neighbor_id, vote in votes.items():
-                    if neighbor_id not in self.down_routers:
+                    if neighbor_id not in self.down_routers: #not casting to dead routers
                         self.trust_model.update_voted_trust(neighbor_id, vote)
                         print(f"Router {self.router_id} updated voted trust for Router {neighbor_id}: {vote}")
                 time.sleep(30) 
