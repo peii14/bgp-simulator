@@ -10,6 +10,7 @@ class VotingMechanism:
     def cast_vote(self, neighbor_id):
         """Cast a vote for a neighbor, either trusting them or not."""
         vote = random.uniform(0.5, 1.0)  # Randomly generate a trust score between 0.5 and 1.0
+        #vote = 'trusted' if len(as_path) < 3 else 'untrusted'
         self.votes[neighbor_id] = vote
         print(f"Router {self.router_id} cast vote for Router {neighbor_id}: {vote}")
         return vote

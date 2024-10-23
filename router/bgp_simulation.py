@@ -261,8 +261,9 @@ class BGP_Router:
             try:
                 votes = self.voting_mechanism.exchange_votes()
                 for neighbor_id, vote in votes.items():
-                    self.trust_model.update_voted_trust(neighbor_id, vote)
-                    print(f"Router {self.router_id} updated voted trust for Router {neighbor_id}: {vote}")
+                    if neighbor_id not in self.down_routers:
+                        self.trust_model.update_voted_trust(neighbor_id, vote)
+                        print(f"Router {self.router_id} updated voted trust for Router {neighbor_id}: {vote}")
                 time.sleep(30) 
             except Exception as e:
                 print(f"Error in voting mechanism: {e}")
