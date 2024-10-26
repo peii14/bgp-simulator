@@ -18,8 +18,28 @@ class BgpAttributeType(Enum):
         AGGREGATOR = 7
 
 class BgpPathAttribute():
-    def __init__(self):
-        pass
+    def __init__(self, attr_type=-1, data={}):
+        if attr_type == -1 or len(data) == 0:
+            return
+
+        match BgpAttributeType(attr_type):
+            case BgpAttributeType.ORIGIN:
+                self.flags = ATTR_TRANSITIVE
+                self.length = 1
+            case BgpAttributeType.AS_PATH:
+                self.flags = ATTR_TRANSITIVE
+                self.length = 2 + 2 * len(data['asns'])
+            case BgpAttributeType.NEXT_HOP:
+                self.flags = ATTR_TRANSITIVE
+                self.length = 4
+            case BgpAttributeType.MULTI_EXIT_DISC:
+                self.flags = ATTR_OPTIONAL
+                self.length = 4
+            case _:
+                pass
+
+        self.type = BgpAttributeType(attr_type)
+        self.data = data
 
     def frombytes(self, path_attr_bytes):
         flags = int(path_attr_bytes[0])
