@@ -37,7 +37,8 @@ class BGP_Router:
         self.voting_mechanism = VotingMechanism(self.router_id, self.neighbors)
         self.sockets = {}
         self.keepalive_received = {}
-        self.down_routers = set() 
+        self.down_routers = set()
+
 
         self.initialize_routing_table()
 
@@ -151,7 +152,7 @@ class BGP_Router:
             self.keepalive_received[neighbor_id] = time.time()
             print(f"Router {self.router_id} received KEEPALIVE from Router {neighbor_id}.")
         elif msg_type == BGP_UPDATE:
-            if self.trust_model.decide_route(neighbor_id):
+            if self.find_best_route(message['payload'],neighbor_id):
                 print(f"Router {self.router_id} trusts Router {neighbor_id}, updating routing table.")
                 self.update_routing_table(neighbor_id, message['payload'])
                 self.propagate_routes(neighbor_id, message['payload'])
@@ -167,11 +168,10 @@ class BGP_Router:
             network = route['network']
             next_hop = neighbor_id
             as_path = route['as_path']
-            existing_route = self.routing_table.get_route(network)
-            if existing_route:
-                if len(as_path) < len(existing_route['as_path']):
-                    print(f"Router {self.router_id} updating existing route {network} via Router {neighbor_id}.")
-                    self.routing_table.update_route(network, next_hop, as_path)
+            best_route=self.find_best_route(network,neighbor_id)
+            if best_route:
+                print(f"Router {self.router_id} updating existing route {network} via Router {neighbor_id}.")
+                self.routing_table.update_route(network, next_hop, as_path)
             else:
                 print(f"Router {self.router_id} adding new route {network} via Router {neighbor_id}.")
                 self.routing_table.add_route(network, next_hop, as_path)
@@ -259,14 +259,34 @@ class BGP_Router:
         """Exchange votes with neighbors and update the trust model continuously."""
         while True:
             try:
-                votes = self.voting_mechanism.exchange_votes()
+                print(f"Router {self.router_id} starting to exchange votes with neighbors.")
+                votes = self.voting_mechanism.exchange_votes(self.routing_table)
+
                 for neighbor_id, vote in votes.items():
-                    if neighbor_id not in self.down_routers: #not casting to dead routers
+                    if neighbor_id not in self.down_routers:
                         self.trust_model.update_voted_trust(neighbor_id, vote)
                         print(f"Router {self.router_id} updated voted trust for Router {neighbor_id}: {vote}")
+                    else:
+                        print(f"Router {self.router_id} skipped Router {neighbor_id} because it is down.")
                 time.sleep(30) 
             except Exception as e:
                 print(f"Error in voting mechanism: {e}")
+
+    def find_best_route(self, routes, neighbor_id):
+        """Find and display the best route for a given network."""
+        for route in routes:
+            if neighbor_id == route['next_hop']:
+                network = route['network']
+                break
+            else:
+                return None
+
+        best_route = self.routing_table.get_best_route(network, self.trust_model)
+        if best_route:
+            print(f"{self.router_id} has the best route for {network}: {best_route[1][0]} via {best_route[1][1]}")
+            return best_route
+        else:
+            print(f"{self.router_id} has no route for {network}.")
 
 if __name__ == "__main__":
     router_id = int(os.getenv("ROUTER_ID"))

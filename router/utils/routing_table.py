@@ -12,7 +12,7 @@ class RoutingTable:
         }
         self.table.append(route)
         self.print_updated_routing_table()
-        
+
     def remove_route(self, network):
         """Remove a route from the routing table based on the network."""
         removed = False
@@ -21,7 +21,7 @@ class RoutingTable:
                 print(f"Removing route for network: {network}")
                 self.table.remove(route)
                 removed = True
-                print("\n--- Updated Routing Table for Router {self.router_id} ---")
+                print(f"\n--- Updated Routing Table for Router {self.router_id} ---")
                 self.print_updated_routing_table()
                 break
         if not removed:
@@ -46,6 +46,20 @@ class RoutingTable:
             if route["network"] == network:
                 return route
         return None
+
+    def get_best_route(self, network, trust_model):
+        """Get the best route for a network based on AS path length and trust."""
+        matching_routes = [route for route in self.table if route["network"] == network]
+
+        if not matching_routes:
+            return None
+
+        #the shortest as_path and higher trust_score
+        best_route = min(
+            matching_routes,
+            key=lambda route: (len(route["as_path"]), -trust_model.get_trust_score(route["next_hop"]))
+        )
+        return best_route
 
     def print_routing_table(self):
         """Print the current state of the routing table."""
