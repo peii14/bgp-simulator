@@ -66,7 +66,6 @@ class BgpMessageBase():
 class BgpMessageOpen(BgpMessageBase):
     def __init__(self, ip="192.168.0.1", version=4, hold_time=0, as_num=0):
         super().__init__(msg_type=BgpMessageType.OPEN)
-        self.payload_fmt = "!BHHIB"
         self.ip_addr = ipaddress.IPv4Address(ip)
         self.version = version
         self.hold_time = hold_time
@@ -74,10 +73,10 @@ class BgpMessageOpen(BgpMessageBase):
 
     def payload(self):
         return struct.pack(
-            self.payload_fmt,
-            4,
-            65033,
-            180,
+            "!BHHIB",
+            self.version,
+            self.as_number,
+            self.hold_time,
             int(self.ip_addr),
             0
         )
